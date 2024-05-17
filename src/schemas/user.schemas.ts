@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { todoSchema } from "./todo.schemas";
-import { draftSchema } from "./draft.schema";
+import { draftSchema } from "./draft.schemas";
 
 export const createUserSchema = z.object({
   name: z.string().max(200),
