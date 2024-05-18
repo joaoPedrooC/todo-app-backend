@@ -14,12 +14,17 @@ export class UserService {
   }
 
   async update(payload: TUserUpdate, userId: string): Promise<IUser> {
+    if(payload.password) {
+      const password = hashSync(payload.password, 12)
+      payload = { ...payload, password }
+    }
+
     const updatingUser: IUser = await prisma.user.update({
       data: payload,
       where: { id: userId },
       include: { todos: true, drafts: true }
     })
 
-    return updatingUser
+    return userReturnWithoutPassword.parse(updatingUser)
   }
 }

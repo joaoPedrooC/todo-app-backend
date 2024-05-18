@@ -4,9 +4,11 @@ import { AppError } from "../errors/AppError";
 
 export class VerifyUserEmailExists {
   static async execute(req: Request, res: Response, next: NextFunction) {
-    const searchingUser = await prisma.user.findFirst({ where: { email: req.body.email  } })
-
-    if(searchingUser) throw new AppError('Email already exists', 409)
+    if(req.body.email) {
+      const searchingUser = await prisma.user.findFirst({ where: { email: req.body.email  } })
+  
+      if(searchingUser) throw new AppError('Email already exists', 409)
+    }
     
     return next()
   }
