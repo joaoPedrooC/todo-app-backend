@@ -8,6 +8,8 @@ export interface IUser {
   drafts: Draft[]
 }
 
-export interface IUserCreate extends Omit<IUser, 'todos' | 'drafts'> {
+export interface IUserCreate extends Omit<IUser, 'todos' | 'drafts' | 'id'> {
   password: string
 }
+
+export type TUserUpdate = Partial<IUserCreate>
