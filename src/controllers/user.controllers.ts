@@ -16,4 +16,13 @@ export class UserController {
 
     return res.status(200).json(updatedUser)
   }
+
+  async delete(req: Request, res: Response): Promise<Response> {
+    const { userId } = req.params
+    const userService = new UserService()
+    
+    await userService.delete(userId)
+
+    return res.status(204).json()
+  }
 }

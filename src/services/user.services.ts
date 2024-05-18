@@ -27,4 +27,8 @@ export class UserService {
 
     return userReturnWithoutPassword.parse(updatingUser)
   }
+
+  async delete(userId: string): Promise<void> {
+    await prisma.user.delete({ where: { id: userId } })
+  }
 }

@@ -12,4 +12,4 @@ const userController = new UserController()
 
 userRouter.post('/', ValidateBodyMiddleware.execute(createUserSchema), VerifyUserEmailExists.execute, userController.create)
 userRouter.patch('/:userId', ValidateBodyMiddleware.execute(updateUserSchema), VerifyUserIdExists.execute, ValidateTokenMiddleware.execute, VerifyPermissionsMiddleware.execute, VerifyUserEmailExists.execute, userController.update)
-// Controller e Service de atualização e Schema de Sessão (ainda não fiz o schema de login).
+userRouter.delete('/:userId', VerifyUserIdExists.execute, ValidateTokenMiddleware.execute, VerifyPermissionsMiddleware.execute, userController.delete)
