@@ -7,6 +7,6 @@ export const todoSchema = z.object({
   status: z.boolean(),
   createdAt: z.date(),
   dueDate: z.date(),
-  finishedAt: z.date(),
+  finishedAt: z.date().nullable(),
   ownerId: z.string()
 })

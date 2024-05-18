@@ -10,6 +10,10 @@ export class UserController {
     return res.status(201).json(newUser)
   }
 
+  getOne(req: Request, res: Response): Response {
+    return res.status(200).json(res.locals.user)
+  }
+
   async update(req: Request, res: Response): Promise<Response> {
     const userService = new UserService()
     const updatedUser: IUser = await userService.update(req.body, req.params.userId)
@@ -18,10 +22,8 @@ export class UserController {
   }
 
   async delete(req: Request, res: Response): Promise<Response> {
-    const { userId } = req.params
     const userService = new UserService()
-    
-    await userService.delete(userId)
+    await userService.delete(req.params.userId)
 
     return res.status(204).json()
   }

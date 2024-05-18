@@ -11,5 +11,6 @@ export const userRouter = Router()
 const userController = new UserController()
 
 userRouter.post('/', ValidateBodyMiddleware.execute(createUserSchema), VerifyUserEmailExists.execute, userController.create)
+userRouter.get('/:userId', VerifyUserIdExists.execute, ValidateTokenMiddleware.execute, VerifyPermissionsMiddleware.execute, userController.getOne)
 userRouter.patch('/:userId', ValidateBodyMiddleware.execute(updateUserSchema), VerifyUserIdExists.execute, ValidateTokenMiddleware.execute, VerifyPermissionsMiddleware.execute, VerifyUserEmailExists.execute, userController.update)
 userRouter.delete('/:userId', VerifyUserIdExists.execute, ValidateTokenMiddleware.execute, VerifyPermissionsMiddleware.execute, userController.delete)
