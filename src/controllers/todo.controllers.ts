@@ -10,4 +10,12 @@ export class TodoController {
 
     return res.status(201).json(newTodo)
   }
+
+  async delete(req: Request, res: Response): Promise<Response> {
+    const { todoId } = req.params
+    const todoService = new TodoService()
+
+    await todoService.delete(todoId)
+    return res.status(204).json()
+  }
 }
