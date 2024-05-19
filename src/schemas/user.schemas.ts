@@ -12,8 +12,8 @@ export const userReturnWithoutPassword = z.object({
   id: z.string(),
   name: z.string(),
   email: z.string(),
-  todos: z.array(todoSchema),
-  drafts: z.array(draftSchema)
+  todos: z.array(z.any()),
+  drafts: z.array(z.any())
 })
 
 export const updateUserSchema = z.object({

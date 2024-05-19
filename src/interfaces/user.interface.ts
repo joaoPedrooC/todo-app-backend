@@ -1,10 +1,11 @@
-import { Draft, Todo } from "@prisma/client"
+import { Draft } from "@prisma/client"
+import { ITodo } from "./todo.interface"
 
 export interface IUser {
   id: string
   name: string
   email: string
-  todos: Todo[]
+  todos: ITodo[]
   drafts: Draft[]
 }
 
