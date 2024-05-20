@@ -7,8 +7,9 @@ export const todoSchema = z.object({
   status: z.boolean(),
   createdAt: z.date(),
   dueDate: z.string().datetime(),
-  finishedAt: z.date().nullable(),
+  finishedAt: z.string().datetime().nullable(),
   ownerId: z.string()
 })
 
 export const todoCreateSchema = todoSchema.omit({ id: true, ownerId: true, status: true, finishedAt: true, createdAt: true })
+export const todoUpdateSchema = todoSchema.omit({ id: true, createdAt: true, finishedAt: true, ownerId: true}).partial()

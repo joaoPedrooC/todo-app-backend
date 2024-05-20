@@ -1,3 +1,6 @@
+import { z } from "zod"
+import { todoUpdateSchema } from "../schemas/todo.schemas"
+
 export interface ITodo {
   id: string
   title: string
@@ -10,3 +13,4 @@ export interface ITodo {
 }
 
 export type TTodoCreate = Omit<ITodo, 'id' | 'status' | 'createdAt' | 'finishedAt' | 'ownerId'>
+export type TTodoUpdate = Partial<Omit<ITodo, 'id' | 'createdAt' | 'ownerId'>>
