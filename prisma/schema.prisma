@@ -31,7 +31,7 @@ model Todo {
   dueDate DateTime
   finishedAt DateTime?
   ownerId String
-  owner User @relation(fields: [ownerId], references: [id])
+  owner User @relation(fields: [ownerId], references: [id], onDelete: Cascade)
 }
 
 model Draft {
@@ -40,5 +40,5 @@ model Draft {
   description String?
   dueDate DateTime?
   ownerId String
-  owner User @relation(fields: [ownerId], references: [id])
+  owner User @relation(fields: [ownerId], references: [id], onDelete: Cascade)
 }
