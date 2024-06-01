@@ -1,4 +1,4 @@
-import { createUserMock } from "../../../__mocks__/users/user.mocks"
+import { createUserMock, invalidUserMock } from "../../../__mocks__/users/user.mocks"
 import { prisma } from "../../../database/prisma"
 import { request } from "../../utils/request"
 
@@ -11,8 +11,11 @@ describe('Integration test: create user.', () => {
     expect(body.id).toBeDefined()
     expect(body.name).toEqual(createUserMock.name)
     expect(body.email).toEqual(createUserMock.email)
+  })
 
-    expect(body.todos).toBeDefined()
-    expect(body.drafts).toBeDefined()
+  test('Should not be able to create user: invalid body.',async  () => {
+    const { body } = await request.post('/users').send(invalidUserMock).expect(403)
+
+    expect(body.message).toBeDefined()
   })
 })

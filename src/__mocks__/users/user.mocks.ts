@@ -1,4 +1,4 @@
-import { IUserCreate, TUserUpdate } from "../../interfaces/user.interface";
+import { IUser, IUserCreate, TUserUpdate } from "../../interfaces/user.interface";
 
 export const createUserMock: IUserCreate = {
   name: "john",
@@ -14,4 +14,9 @@ export const updateCompleteUserMock: TUserUpdate = {
 
 export const updatePartialUserMock: TUserUpdate = {
   name: "john doe"
+}
+
+
+export const invalidUserMock: Pick<IUser, 'name'> = {
+  name: "john"
 }
