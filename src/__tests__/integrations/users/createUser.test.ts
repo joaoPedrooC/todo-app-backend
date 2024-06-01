@@ -18,4 +18,11 @@ describe('Integration test: create user.', () => {
 
     expect(body.message).toBeDefined()
   })
+
+  test('Should not be able to create user: user email already registered', async () => {
+    await request.post('/users').send(createUserMock).expect(201)
+    const { body } = await request.post('/users').send(createUserMock).expect(409)
+
+    expect(body.message).toBe('Email already exists')
+  })
 })
