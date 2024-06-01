@@ -17,4 +17,11 @@ describe('Integration test: delete user.', () => {
 
     expect(body.message).toBe('User not found.')
   })
+
+  test('Should not be able to delete user: missing bearer token.', async () => {
+    const { body: user } = await request.post('/users').send(createUserMock).expect(201)
+    const { body } = await request.delete(`/users/${user.id}`).expect(401)
+
+    expect(body.message).toEqual('Missing bearer token')
+  })
 })
