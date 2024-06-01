@@ -8,7 +8,7 @@ describe('Unit test: delete user', () => {
   
   test('Should be able to delete an user successfully.', async () => {
     const userService = new UserService()
-    const user: IUser = await userService.create(createUserMock)
+    const user: Omit<IUser, 'todos' | 'drafts'> = await prisma.user.create({ data: createUserMock })
 
     await userService.delete(user.id)
     const response: Omit<IUser, 'todos' | 'drafts'> | null = await prisma.user.findFirst({ where: { id: user.id } })
