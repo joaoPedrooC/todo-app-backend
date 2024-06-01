@@ -11,3 +11,7 @@ export const updateCompleteUserMock: TUserUpdate = {
   email: "johndoe@email.com",
   password: "1234"
 }
+
+export const updatePartialUserMock: TUserUpdate = {
+  name: "john doe"
+}
