@@ -27,8 +27,8 @@ describe('Unit test: update user', () => {
     const data = await userService.update(updatePartialUserMock, user.id)
 
     expect(data.id).toBe(user.id)
-    expect(data.name).toBe(updateCompleteUserMock.name)
-    expect(data.email).toBe(updateCompleteUserMock.email)
+    expect(data.name).toBe(updatePartialUserMock.name)
+    expect(data.email).toBe(user.email)
 
     expect(data.todos).toHaveLength(0)
     expect(data.drafts).toHaveLength(0)
