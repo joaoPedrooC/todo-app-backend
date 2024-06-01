@@ -5,3 +5,8 @@ export const createTodoMock: TTodoCreate = {
   description: 'This is a description',
   dueDate: new Date('2024-06-01T20:41:29.322Z')
 }
+
+export const createTodoWithoutDescription: TTodoCreate = {
+  title: 'This is a title',
+  dueDate: new Date('2024-06-01T20:41:29.322Z')
+}
