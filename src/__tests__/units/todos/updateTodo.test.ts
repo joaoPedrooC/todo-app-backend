@@ -42,7 +42,6 @@ describe('Unit test: update todo', () => {
     
     const todo = (await prisma.todo.findMany())[0]
     const response = await todoService.update(updateTodoPartialMock, todo.id)
-    console.log({ ...todo, title: updateTodoPartialMock.title });
 
     expect(response).toStrictEqual({ ...todo, title: updateTodoPartialMock.title })
   })
