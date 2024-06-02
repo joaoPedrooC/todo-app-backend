@@ -18,3 +18,7 @@ export const updateTodoCompleteMock: TTodoUpdate = {
   dueDate: new Date(),
   status: true
 }
+
+export const updateTodoPartialMock: TTodoUpdate = {
+  title: 'This is an updated title for partial update'
+}

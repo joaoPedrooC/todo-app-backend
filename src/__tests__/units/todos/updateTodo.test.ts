@@ -1,4 +1,4 @@
-import { createTodoMock, updateTodoCompleteMock } from "../../../__mocks__/todos/todo.mocks"
+import { createTodoMock, updateTodoCompleteMock, updateTodoPartialMock } from "../../../__mocks__/todos/todo.mocks"
 import { createUserMock } from "../../../__mocks__/users/user.mocks"
 import { prisma } from "../../../database/prisma"
 import { TodoService } from "../../../services/todo.services"
@@ -35,5 +35,15 @@ describe('Unit test: update todo', () => {
 
     expect(response.status).toBe(true)
     expect(response.finishedAt).toBeDefined()
+  })
+
+  test('Should be able to update todo with partial body.', async () => {
+    const todoService = new TodoService()
+    
+    const todo = (await prisma.todo.findMany())[0]
+    const response = await todoService.update(updateTodoPartialMock, todo.id)
+    console.log({ ...todo, title: updateTodoPartialMock.title });
+
+    expect(response).toStrictEqual({ ...todo, title: updateTodoPartialMock.title })
   })
 })
