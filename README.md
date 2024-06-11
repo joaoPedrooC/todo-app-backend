@@ -1,0 +1,38 @@
+# Descrição
+
+Esta é uma aplicação em que você consegue criar, editar e excluir uma conta, além de criar, editar e excluir tarefas e rascunhos.
+
+## Instalação
+
+Ao clonar o repositório, utilize o seguinte comando na pasta raiz para instalar as dependêndias do projeto:
+
+```bash
+$ npm install
+```
+
+## Configuração e inicialização da aplicação
+
+1. Crie um novo arquivo .env.dev na raíz do projeto, trazendo as informações do arquivo .env.example para seu novo arquivo -- variáveis serão utilizadas para o ambiente em produção;
+2. Crie um novo arquivo .env.test na raíz do projeto, trazendo as informações do arquivo .env.example para seu novo arquivo -- variáveis serão utilizadas para o ambiente em desenvolvimento;
+3. Substitua as informações de exemplo da variável "DATABASE_URL", além de adicionar uma SECRET_KEY e EXPIRES_IN nos arquivos .env.dev e .env.test.
+
+Para aplicar as migrações do prisma e criar as tabelas, rode os seguintes comandos na raiz do projeto:
+
+```bash
+$ npm run migrate:dev
+$ npm run migrate:test
+```
+
+Estes comandos irão aplicar as migrações no ambiente de desenvolvimento e no ambiente de teste, respectivamente.
+
+Para iniciar a aplicação, rode o seguinte comando na raiz do projeto:
+
+```bash
+$ npm run start
+```
+
+Para rodar os testes, rode o seguinte comando na raiz do projeto:
+
+```bash
+$ npm run test
+```
