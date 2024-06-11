@@ -274,3 +274,69 @@ Resposta (Email existente) - 409 Conflict
   "message": "Email already exists"
 }
 ```
+
+### Sessão
+
+1. Login
+
+**POST /session**
+
+Corpo da requisição:
+
+```json
+{
+  "email": "joao@email.com",
+  "password": "senha123"
+}
+```
+
+Resposta (Sucesso) - 200 OK
+
+```json
+{
+  "token": "randomstring",
+  "data": {
+    "id": "randomstring",
+    "name": "João",
+    "email": "joao@email.com",
+    "todos": [],
+    "drafts": []
+  }
+}
+```
+
+Resposta (E-mail e/ou senha incorretos) - 401 Unauthorized
+
+```json
+{
+  "message": "Invalid e-mail or password"
+}
+```
+
+Resposta (Dados inválidos) - 403 Forbidden
+
+```json
+{
+  "message": {
+    "email": [
+      "Required"
+    ],
+    "password": [
+      "Required"
+    ]
+  }
+}
+```
+
+```json
+{
+  "message": {
+    "email": [
+      "Expected string, received number"
+    ],
+    "password": [
+      "Expected string, received number"
+    ]
+  }
+}
+```
