@@ -154,3 +154,37 @@ Resposta (Permissão insuficiente) - 403 Forbidden
 ```
 
 > Nesta API o usuário pode visualizar apenas o próprio perfil, enviando seu token de autenticação. Este erro será lançado caso o usuário tente visualizar o perfil de outra pessoa.
+
+3. Deleção de usuário
+
+**DELETE /users/:userId**
+
+Resposta (Sucesso) - 204 No Content
+
+```json
+{}
+```
+
+Resposta (Usuário não encontrado) - 404 Not Found
+
+```json
+{
+  "message": "User not found."
+}
+```
+
+Resposta (Token não enviado) - 401 Unauthorized
+
+```json
+{
+  "message": "Missing bearer token"
+}
+```
+
+Resposta (Permissão insuficiente) - 403 Forbidden
+
+```json
+{
+  "message": "Insufficient permission"
+}
+```
