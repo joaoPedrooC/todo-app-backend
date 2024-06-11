@@ -159,6 +159,10 @@ Resposta (Permissão insuficiente) - 403 Forbidden
 
 **DELETE /users/:userId**
 
+> ```js
+> Authorization: `Bearer ${token}`
+> ```
+
 Resposta (Sucesso) - 204 No Content
 
 ```json
@@ -186,5 +190,87 @@ Resposta (Permissão insuficiente) - 403 Forbidden
 ```json
 {
   "message": "Insufficient permission"
+}
+```
+
+4. Atualização de usuário
+
+**PATCH /users/user:Id**
+
+> ```js
+> Authorization: `Bearer ${token}`
+> ```
+
+Corpo da requisição:
+
+```json
+{
+  "name": "João",
+  "email": "joao@email.com",
+  "password": "senha123"
+}
+```
+
+> Por se tratar de uma rota de atualização PATCH, as chaves não são obrigatórias, você é capaz de atualizar somente o nome, por exemplo!
+
+Resposta (Sucesso) - 200 OK
+
+```json
+{
+  "id": "randomstring",
+  "name": "João",
+  "email": "joao@email.com",
+  "todos": [],
+  "drafts": []
+}
+```
+
+Resposta (Dados inválidos) - 403 Forbidden
+
+```json
+{
+  "message": {
+    "name": [
+      "Expected string, received number"
+    ],
+    "email": [
+      "Expected string, received number"
+    ],
+    "password": [
+      "Expected string, received number"
+    ]
+  }
+}
+```
+
+Resposta (Usuário não encontrado) - 404 Not Found
+
+```json
+{
+  "message": "User not found."
+}
+```
+
+Resposta (Token não enviado) - 401 Unauthorized
+
+```json
+{
+  "message": "Missing bearer token"
+}
+```
+
+Resposta (Permissão insuficiente) - 403 Forbidden
+
+```json
+{
+  "message": "Insufficient permission"
+}
+```
+
+Resposta (Email existente) - 409 Conflict
+
+```json
+{
+  "message": "Email already exists"
 }
 ```
