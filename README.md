@@ -108,3 +108,49 @@ Resposta (Email existente) - 409 Conflict
   "message": "Email already exists"
 }
 ```
+
+2. Busca de usuário
+
+**GET /users/:userId**
+
+> ```js
+> Authorization: `Bearer ${token}`
+> ```
+
+Resposta (Sucesso) - 200 OK
+
+```json
+{
+  "id": "randomstring",
+  "name": "João",
+  "email": "joao@email.com",
+  "todos": [],
+  "drafts": []
+}
+```
+
+Resposta (Usuário não encontrado) - 404 Not Found
+
+```json
+{
+  "message": "User not found."
+}
+```
+
+Resposta (Token não enviado) - 401 Unauthorized
+
+```json
+{
+  "message": "Missing bearer token"
+}
+```
+
+Resposta (Permissão insuficiente) - 403 Forbidden
+
+```json
+{
+  "message": "Insufficient permission"
+}
+```
+
+> Nesta API o usuário pode visualizar apenas o próprio perfil, enviando seu token de autenticação. Este erro será lançado caso o usuário tente visualizar o perfil de outra pessoa.
