@@ -36,3 +36,75 @@ Para rodar os testes, rode o seguinte comando na raiz do projeto:
 ```bash
 $ npm run test
 ```
+
+## Rotas
+
+### Usuário
+
+1. Criação de usuário
+
+**POST /users**
+
+Corpo da requisição:
+
+```bash
+{
+	"name": "João",
+	"email": "joao@email.com",
+	"password": "senha123"
+}
+```
+
+Resposta (Sucesso) - 201 Created
+
+```json
+{
+  "id": "randomstring",
+  "name": "João",
+  "email": "joao@email.com",
+  "todos": [],
+  "drafts": []
+}
+```
+
+Resposta (Dados inválidos) - 403 Forbidden
+
+```json
+{
+  "message": {
+    "name": [
+      "Required"
+    ],
+    "email": [
+      "Required"
+    ],
+    "password": [
+      "Required"
+    ]
+  }
+}
+```
+
+```json
+{
+  "message": {
+    "name": [
+      "Expected string, received number"
+    ],
+    "email": [
+      "Expected string, received number"
+    ],
+    "password": [
+      "Expected string, received number"
+    ]
+  }
+}
+```
+
+Resposta (Email existente) - 409 Conflict
+
+```json
+{
+  "message": "Email already exists"
+}
+```
