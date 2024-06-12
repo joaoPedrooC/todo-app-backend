@@ -439,12 +439,6 @@ Resposta (Permissão insuficiente) - 403 Forbidden
 > Authorization: `Bearer ${token}`
 > ```
 
-Corpo da requisição:
-
-```json
-{}
-```
-
 Resposta (Sucesso) - 204 No Content
 
 ```json
@@ -480,5 +474,94 @@ Resposta (Tarefa não encontrada) - 404 Not Found
 ```json
 {
   "message": "Todo not found."
+}
+```
+
+3. Atualização de tarefa
+
+**PATCH /todos/user/:userId/todo/:todoId**
+
+> ```js
+> Authorization: `Bearer ${token}`
+> ```
+
+Corpo da requisição:
+
+```json
+{
+  "title": "Titulo da tarefa",
+  "description": "Descrição da tarefa (opcional)",
+  "status": true,
+  "dueDate": "2024-06-11T00:00:00.000Z",
+}
+```
+
+> Por se tratar de uma rota de atualização PATCH, as chaves não são obrigatórias, você é capaz de atualizar somente o titulo, por exemplo!
+
+Resposta (Sucesso) - 200 OK
+
+```json
+{
+  "id": "randomstring",
+  "title": "Titulo da tarefa",
+  "description": "Descrição da tarefa (opcional)",
+  "status": true,
+  "createdAt": "2024-06-11T21:08:03.907Z",
+  "dueDate": "2024-06-11T00:00:00.000Z",
+  "finishedAt": "2024-06-11T22:10:15.907Z",
+  "ownerId": "randomstring"
+}
+```
+
+Resposta (Dados inválidos) - 403 Forbidden
+
+```json
+{
+  "message": {
+    "title": [
+      "Expected string, received number"
+    ],
+    "description": [
+      "Expected string, received number"
+    ],
+    "status": [
+      "Expected boolean, received date"
+    ],
+    "dueDate": [
+      "Expected datetime, received string"
+    ]
+  }
+}
+```
+
+Resposta (Tarefa não encontrada) - 404 Not Found
+
+```json
+{
+  "message": "Todo not found."
+}
+```
+
+Resposta (Usuário não encontrado) - 404 Not Found
+
+```json
+{
+  "message": "User not found."
+}
+```
+
+Resposta (Token não enviado) - 401 Unauthorized
+
+```json
+{
+  "message": "Missing bearer token"
+}
+```
+
+Resposta (Permissão insuficiente) - 403 Forbidden
+
+```json
+{
+  "message": "Insufficient permission"
 }
 ```
