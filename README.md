@@ -28,7 +28,7 @@ Estes comandos irão aplicar as migrações no ambiente de desenvolvimento e no 
 Para iniciar a aplicação, rode o seguinte comando na raiz do projeto:
 
 ```bash
-$ npm run start
+$ npm run dev
 ```
 
 Para rodar os testes, rode o seguinte comando na raiz do projeto:
