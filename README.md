@@ -430,3 +430,55 @@ Resposta (Permissão insuficiente) - 403 Forbidden
   "message": "Insufficient permission"
 }
 ```
+
+2. Deleção de tarefa
+
+**DELETE /todos/user/:userId/todo/:todoId**
+
+> ```js
+> Authorization: `Bearer ${token}`
+> ```
+
+Corpo da requisição:
+
+```json
+{}
+```
+
+Resposta (Sucesso) - 204 No Content
+
+```json
+{}
+```
+
+Resposta (Usuário não encontrado) - 404 Not Found
+
+```json
+{
+  "message": "User not found."
+}
+```
+
+Resposta (Token não enviado) - 401 Unauthorized
+
+```json
+{
+  "message": "Missing bearer token"
+}
+```
+
+Resposta (Permissão insuficiente) - 403 Forbidden
+
+```json
+{
+  "message": "Insufficient permission"
+}
+```
+
+Resposta (Tarefa não encontrada) - 404 Not Found
+
+```json
+{
+  "message": "Todo not found."
+}
+```
