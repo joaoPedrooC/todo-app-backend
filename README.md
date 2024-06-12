@@ -340,3 +340,93 @@ Resposta (Dados inválidos) - 403 Forbidden
   }
 }
 ```
+
+### Tarefas
+
+1. Criação de tarefa
+
+**POST /todos/user/:userId**
+
+> ```js
+> Authorization: `Bearer ${token}`
+> ```
+
+Corpo da requisição:
+
+```json
+{
+  "title": "Titulo da tarefa",
+  "description": "Descrição da tarefa (opcional)",
+  "dueDate": "2024-06-11T00:00:00Z"
+}
+```
+
+Resposta (Sucesso) - 201 Created
+
+```json
+{
+  "id": "randomstring",
+  "title": "Titulo da tarefa",
+  "description": "Descrição da tarefa (opcional)",
+  "status": false,
+  "createdAt": "2024-06-11T21:08:03.907Z",
+  "dueDate": "2024-06-11T00:00:00.000Z",
+  "finishedAt": null,
+  "ownerId": "randomstring"
+}
+```
+
+Resposta (Dados inválidos) - 403 Forbidden
+
+```json
+{
+  "message": {
+    "title": [
+      "Required"
+    ],
+    "dueDate": [
+      "Required"
+    ]
+  }
+}
+```
+
+```json
+{
+  "message": {
+    "title": [
+      "Expected string, received number"
+    ],
+    "description": [
+      "Expected string, received number"
+    ],
+    "dueDate": [
+      "Expected datetime, received string"
+    ]
+  }
+}
+```
+
+Resposta (Usuário não encontrado) - 404 Not Found
+
+```json
+{
+  "message": "User not found."
+}
+```
+
+Resposta (Token não enviado) - 401 Unauthorized
+
+```json
+{
+  "message": "Missing bearer token"
+}
+```
+
+Resposta (Permissão insuficiente) - 403 Forbidden
+
+```json
+{
+  "message": "Insufficient permission"
+}
+```
