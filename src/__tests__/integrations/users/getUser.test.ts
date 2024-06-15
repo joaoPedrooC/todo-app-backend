@@ -52,4 +52,11 @@ describe('Integration test: get user', () => {
 
     expect(body.message).toBe('Insufficient permission')
   })
+
+  test('Should not be able to get an user with malformed token.', async () => {
+    const { id } = (await prisma.user.findMany())[0]
+    const { body } = await request.get(`/users/${id}`).set('Authorization', `Bearer malformedjwt`).expect(403)
+
+    expect(body.message).toBe('jwt malformed')
+  })
 })
