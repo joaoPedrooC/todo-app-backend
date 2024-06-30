@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "node dist/app.js",
+    "build": "npx tsc",
     "dev": "npx dotenv -e .env.dev -- tsnd --respawn --cls src/server",
-    "migrate:dev": "npx dotenv -e .env.dev -- npx prisma migrate dev",
     "test": "npx dotenv -e .env.test -- jest --verbose --runInBand",
-    "migrate:test": "npx dotenv -e .env.test -- npx prisma migrate dev"
+    "migrate:dev": "npx dotenv -e .env.dev -- npx prisma migrate dev",
+    "migrate:test": "npx dotenv -e .env.test -- npx prisma migrate dev",
+    "migrate:deploy": "npx prisma migrate deploy"
   },
   "keywords": [],
   "author": "",
