@@ -1,7 +1,7 @@
 export interface IDraft {
   id: string
-  title?: string
-  description?: string
-  dueDate?: Date
+  title: string | null
+  description: string | null
+  dueDate: Date | null
   ownerId: string
 }

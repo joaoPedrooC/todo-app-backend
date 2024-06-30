@@ -1,4 +1,4 @@
-import { Draft } from "@prisma/client"
+import { IDraft } from "./draft.interface"
 import { ITodo } from "./todo.interface"
 
 export interface IUser {
@@ -6,7 +6,7 @@ export interface IUser {
   name: string
   email: string
   todos: ITodo[]
-  drafts: Draft[]
+  drafts: IDraft[]
 }
 
 export interface IUserCreate extends Omit<IUser, 'todos' | 'drafts' | 'id'> {
